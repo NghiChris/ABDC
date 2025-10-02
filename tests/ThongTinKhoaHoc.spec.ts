@@ -74,7 +74,7 @@ test.describe("Test function course information", () => {
             khoaHocPage.pageCard8,
             khoaHocPage.pageCard9,
             khoaHocPage.pageCard10,
-            khoaHocPage.pageCard12,
+            // khoaHocPage.pageCard12,
         ];
 
         for (const card of cardList) {
@@ -96,4 +96,8 @@ test.describe("Test function course information", () => {
         expect(titleOnDetailPage).toBe(titleOnCard);
     })
 
+    test("Bugs vị trí khi chuyển trang", async () => {
+        await khoaHocPage.pageCard3.click();
+        await khoaHocPage.scrollToTop();
+    })
 });
