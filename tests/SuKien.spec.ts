@@ -1,14 +1,17 @@
 import { test } from "@playwright/test";
 import { DashboardPage } from "../pages/Dashboard";
 import { SuKienPage } from "../pages/SuKienPage";
+import { KhoaHocPage } from "../pages/KhoaHocPage";
 
 test.describe("Test function event", () => {
     let dashboard: DashboardPage;
     let suKienPage: SuKienPage;
+    let khoaHocPage: KhoaHocPage;
 
     test.beforeEach(async ({ page }) => {
         dashboard = new DashboardPage(page);
         suKienPage = new SuKienPage(page);
+        khoaHocPage = new KhoaHocPage(page);
         await dashboard.goToHomePage();
     })
 
@@ -23,10 +26,11 @@ test.describe("Test function event", () => {
 
     test("Mở Event Sale Cuối Năm + Quay về", async () => {
         await dashboard.waitForDomLoaded();
+        await suKienPage.hoverMouse();
         await suKienPage.openLastYearEvent();
         //Kiểm tra trang mở đúng
         await suKienPage.expectAtUrl(/\/sukien\/lastYear$/);
-        await suKienPage.quayVe();
+        await khoaHocPage.backHome();
     })
 
     test("Mở Event Giáng Sinh", async () => {

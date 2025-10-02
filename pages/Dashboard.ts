@@ -13,6 +13,7 @@ export class DashboardPage {
     }
 
     async goToHomePage() {
+        // await this.page.goto(process.env.BASE_URL || '', {
        await this.page.goto('/', {
             waitUntil: "domcontentloaded", //chờ đến khi trang load hết
             timeout: 15000,

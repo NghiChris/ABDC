@@ -6,7 +6,6 @@ export class SuKienPage { //cách 1
     readonly page: Page;
     readonly suKienMenu: Locator;
     readonly lastYear: Locator;
-    readonly comeBack: Locator;
     readonly giangSinh: Locator;
     readonly noel: Locator;
     readonly errorBug: Locator;
@@ -19,7 +18,7 @@ export class SuKienPage { //cách 1
         this.lastYear = page.getByRole('link', { name: "Sự kiện Sale Cuối Năm" }).first();
         this.giangSinh = page.getByRole('link', { name: "Sự kiện Giáng sinh" }).first();
         this.noel = page.getByRole('link', { name: "Sự kiện Noel" }).first();
-        this.comeBack = page.getByRole('link', { name: "Quay về trang chủ" });
+        // this.comeBack = page.getByRole('link', { name: "Quay về trang chủ" }); *
         // this.comeBack = page.locator('a', { hasText: 'Quay về trang chủ' });
         // this.comeBack = page.locator('text=Quay về trang chủ');
         this.errorBug = page.locator("h1.text404");
@@ -30,11 +29,14 @@ export class SuKienPage { //cách 1
     async openSuKien() {
         await this.suKienMenu.click(); // cách 1
         // await this.clickAndWaitForLoad(this.suKienMenu); // cách 2
-       
     }  
-     
+    
+    async hoverMouse() {
+        await this.suKienMenu.hover()
+    }
+
     async openLastYearEvent() {
-        await this.suKienMenu.hover(); //Di chuyển chuột vào Sự kiện để hiển thị bảng Menu
+        // await this.suKienMenu.hover(); //Di chuyển chuột vào Sự kiện để hiển thị bảng Menu
         await this.lastYear.click();
         // await this.clickAndWaitForLoad(this.lastYear);
     }
@@ -49,10 +51,6 @@ export class SuKienPage { //cách 1
         await this.suKienMenu.hover();
         await this.noel.click();
         // await this.clickAndWaitForLoad(this.noel);
-    }
-
-    async quayVe() {
-        await this.comeBack.click();
     }
 
     async isAtErrorBug () {
