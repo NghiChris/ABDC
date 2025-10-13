@@ -1,6 +1,6 @@
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 
-export class KhoaHocPage {
+export class DanhSachPage {
     readonly page: Page;
     // readonly khoaHocTitle: Locator;
     readonly pageCard1: Locator;
@@ -13,8 +13,8 @@ export class KhoaHocPage {
     readonly pageCard6: Locator;
     readonly pageCard7: Locator;
     readonly pageCard8: Locator;
-    readonly pageCard9: Locator;
-    readonly pageCard10: Locator;
+    // readonly pageCard9: Locator;
+    // readonly pageCard10: Locator;
     readonly pageCard12: Locator;
     readonly comeBack: Locator;
     readonly nextPage2: Locator;
@@ -38,9 +38,9 @@ export class KhoaHocPage {
         this.pageCard5 = page.locator("a[href='/chitiet/111111111111']");
         this.pageCard6 = page.locator("a[href='/chitiet/12343554654546456456']");
         this.pageCard7 = page.locator("a[href='/chitiet/12345']");
-        this.pageCard8 = page.locator("a[href='/chitiet/123456736']");
-        this.pageCard9 = page.locator("a[href='/chitiet/123456y']");
-        this.pageCard10 = page.locator("a[href='/chitiet/13454']");
+        this.pageCard8 = page.locator("a[href='/chitiet/100999999']");
+        // this.pageCard9 = page.locator("a[href='/chitiet/123456y']");
+        // this.pageCard10 = page.locator("a[href='/chitiet/13454']");
         this.pageCard12 = page.locator("a[href='/chitiet/15054']");
         this.nextPage2 = page.getByRole('button', { name: 'Page 2' });
         this.moPageAn = page.getByRole('button', { name: '...' });

@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 // import { KhoaHocPage } from "./KhoaHocPage";
-import { DashboardPage } from "./Dashboard";
+import { DashboardPage } from "../Dashboard";
 
 export class ThongTinKhoaPage extends DashboardPage {
     // readonly page: Page;

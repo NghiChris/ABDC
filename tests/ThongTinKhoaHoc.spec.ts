@@ -1,19 +1,19 @@
 import { test, expect } from "@playwright/test";
 import { DashboardPage } from "../pages/Dashboard";
-import { KhoaHocPage } from "../pages/KhoaHocPage";
-import { ThongTinKhoaPage } from "../pages/ThongTinKhoaPage";
-import { KhoaThamKhaoPage } from "../pages/KhoaHocThamKhao";
+import { DanhSachPage } from "../pages/KhoaHoc/DanhSachPage";
+import { ThongTinKhoaPage } from "../pages/KhoaHoc/ThongTinKhoaPage";
+import { KhoaThamKhaoPage } from "../pages/KhoaHoc/KhoaHocThamKhao";
 
 test.describe("Test function course information", () => {
     let dashboard: DashboardPage; //khai báo biến 
-    let khoaHocPage: KhoaHocPage;
+    let danhSachPage: DanhSachPage;
     let thongTinKhoa: ThongTinKhoaPage;
     let khoaThamKhao: KhoaThamKhaoPage;
     const expectedTitle = "LẬP TRÌNH FRONT-END CHUYÊN NGHIỆP";
 
     test.beforeEach(async ({ page }) => {
         dashboard = new DashboardPage(page);
-        khoaHocPage = new KhoaHocPage(page);
+        danhSachPage = new DanhSachPage(page);
         thongTinKhoa = new ThongTinKhoaPage(page);
         khoaThamKhao = new KhoaThamKhaoPage(page);
         await dashboard.goToHomePage();
@@ -21,26 +21,26 @@ test.describe("Test function course information", () => {
     });
 
     test("Mở Khoá học 1 Javascriptt thành công + comeBack", async () => {
-        await khoaHocPage.openJavascriptt();
+        await danhSachPage.openJavascriptt();
         await dashboard.waitForDomLoaded();
-        await khoaHocPage.backHome();
+        await danhSachPage.backHome();
     })
 
     test("Mở Khoá Học 2 Lập trình web thành công", async () => {
-        await khoaHocPage.openLapTrinhWeb();
+        await danhSachPage.openLapTrinhWeb();
         await thongTinKhoa.isAtThongTinTitle();
     })
 
     test("Nội dung Khoá Học", async ({ page }) => {
-        await khoaHocPage.openLapTrinhWeb();
-        await khoaHocPage.scrollToElement(thongTinKhoa.buttonXemTruoc);
+        await danhSachPage.openLapTrinhWeb();
+        await danhSachPage.scrollToElement(thongTinKhoa.buttonXemTruoc);
         await thongTinKhoa.noiDungKhoaHoc();
         // await expect(page.locator(".courseContent h6")).toHaveText("Nội dung khóa học");
         await expect(page.getByText("Nội dung khóa học")).toBeVisible();
     })
 
     test("Thông tin Khoá Học Đăng Ký" , async ({ page }) => {
-        await khoaHocPage.openLapTrinhWeb();
+        await danhSachPage.openLapTrinhWeb();
         await thongTinKhoa.nutDangKy();
         await page.goBack({ waitUntil: 'domcontentloaded' });//trở về trang trước
         await thongTinKhoa.inputMa("asdsadf");
@@ -66,14 +66,14 @@ test.describe("Test function course information", () => {
         // await khoaHocPage.pageCard12.click();
         // await expect(page.locator("h4")).toHaveText("LẬP TRÌNH FRONT-END CHUYÊN NGHIỆP");
         const cardList = [
-            khoaHocPage.pageCard2,
-            khoaHocPage.pageCard3,
-            khoaHocPage.pageCard4,
-            khoaHocPage.pageCard6,
-            khoaHocPage.pageCard7,
-            khoaHocPage.pageCard8,
-            khoaHocPage.pageCard9,
-            khoaHocPage.pageCard10,
+            danhSachPage.pageCard2,
+            danhSachPage.pageCard3,
+            danhSachPage.pageCard4,
+            danhSachPage.pageCard6,
+            danhSachPage.pageCard7,
+            danhSachPage.pageCard8,
+            // khoaHocPage.pageCard9,
+            // khoaHocPage.pageCard10,
             // khoaHocPage.pageCard12,
         ];
 
@@ -83,11 +83,11 @@ test.describe("Test function course information", () => {
     })
 
     test("So sánh tên khoá học giữa danh sách và trang chi tiết", async () => {
-        await khoaHocPage.openPage2();
-        const titleOnCard = await khoaHocPage.page2Card1.innerText();
+        await danhSachPage.openPage2();
+        const titleOnCard = await danhSachPage.page2Card1.innerText();
         console.log("📄 Tiêu đề trên card:", titleOnCard);
 
-        await khoaHocPage.page2Card1.click();
+        await danhSachPage.page2Card1.click();
         await dashboard.waitForDomLoaded();
 
         const titleOnDetailPage = await thongTinKhoa.getCourseTitleText(thongTinKhoa.titleKhoa1);
@@ -97,7 +97,7 @@ test.describe("Test function course information", () => {
     })
 
     test("Bugs vị trí khi chuyển trang", async () => {
-        await khoaHocPage.pageCard3.click();
-        await khoaHocPage.scrollToTop();
+        await danhSachPage.pageCard3.click();
+        await danhSachPage.scrollToTop();
     })
 });

@@ -4,12 +4,14 @@ export class DashboardPage {
     readonly page: Page;
     readonly khoaHocMenu: Locator;
     readonly title: Locator;
-    
+    readonly suKienMenu: Locator;
+
     constructor(page: Page) {
         this.page = page;
         this.khoaHocMenu = page.getByRole('link', { name: "Khóa học" }).first();
         // // this.khoaHocMenu = page.locator("a[href='/khoahoc']").first();
         this.title = page.locator("h3").first();
+        this.suKienMenu = page.getByRole('link', { name: "Sự kiện" }).first();
     }
 
     async goToHomePage() {
@@ -42,6 +44,14 @@ export class DashboardPage {
         return await this.title.isVisible();
     }
     
+    async openSuKien() {
+        await this.suKienMenu.click(); // cách 1
+        // await this.clickAndWaitForLoad(this.suKienMenu); // cách 2
+    }  
+    
+    async hoverMouse() {
+        await this.suKienMenu.hover()
+    }
  
     
 }        

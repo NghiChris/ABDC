@@ -1,10 +1,10 @@
 import { Page, Locator, expect } from "@playwright/test";
+import { DashboardPage } from "../Dashboard";
 
-
-export class SuKienPage { //cách 1
-// export class SuKienPage extends DashboardPage {  //cách 2 (command lại readonly page, super(page)bật lên)
-    readonly page: Page;
-    readonly suKienMenu: Locator;
+// export class SuKienList { //cách 1
+export class SuKienList extends DashboardPage {  //cách 2 (command lại readonly page, super(page)bật lên)
+    // readonly page: Page;
+    // readonly suKienMenu: Locator;
     readonly lastYear: Locator;
     readonly giangSinh: Locator;
     readonly noel: Locator;
@@ -12,9 +12,9 @@ export class SuKienPage { //cách 1
     readonly backTop: Locator;
 
     constructor (page: Page) {
-        // super(page);
-        this.page = page;
-        this.suKienMenu = page.getByRole('link', { name: "Sự kiện" }).first();
+        super(page);
+        // this.page = page;
+        // this.suKienMenu = page.getByRole('link', { name: "Sự kiện" }).first();
         this.lastYear = page.getByRole('link', { name: "Sự kiện Sale Cuối Năm" }).first();
         this.giangSinh = page.getByRole('link', { name: "Sự kiện Giáng sinh" }).first();
         this.noel = page.getByRole('link', { name: "Sự kiện Noel" }).first();
@@ -26,14 +26,14 @@ export class SuKienPage { //cách 1
     }    
 
 
-    async openSuKien() {
-        await this.suKienMenu.click(); // cách 1
-        // await this.clickAndWaitForLoad(this.suKienMenu); // cách 2
-    }  
+    // async openSuKien() {
+    //     await this.suKienMenu.click(); // cách 1
+    //     // await this.clickAndWaitForLoad(this.suKienMenu); // cách 2
+    // }  
     
-    async hoverMouse() {
-        await this.suKienMenu.hover()
-    }
+    // async hoverMouse() {
+    //     await this.suKienMenu.hover()
+    // }
 
     async openLastYearEvent() {
         // await this.suKienMenu.hover(); //Di chuyển chuột vào Sự kiện để hiển thị bảng Menu

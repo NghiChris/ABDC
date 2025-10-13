@@ -1,7 +1,7 @@
-import { Page, Locator, expect } from "@playwright/test";
-import { KhoaHocPage } from "./KhoaHocPage";
+import { Page, Locator } from "@playwright/test";
+import { DanhSachPage } from "./DanhSachPage";
 
-export class KhoaThamKhaoPage extends KhoaHocPage {
+export class KhoaThamKhaoPage extends DanhSachPage {
     // readonly page: Page;
     readonly card1: Locator;
     readonly card2: Locator;
@@ -12,10 +12,11 @@ export class KhoaThamKhaoPage extends KhoaHocPage {
         super (page);
         // this.page = page;
         // this.card1 = page.getByText('Backend 54');
-        this.card1 = page.locator('.stikerCard', { hasText: 'Backend 54' });
-        this.card2 = page.getByText('Backend9');
-        this.card3 = page.locator("a.cardGlobal[href='/chitiet/13454']");
-        this.card4 = page.locator("a.cardGlobal[href='/chitiet/13485']");
+        // this.card1 = page.locator('.stikerCard', { hasText: 'Backend 54' });
+        this.card1 = page.locator("a.cardGlobal[href='/chitiet/100999999']");
+        this.card2 = page.locator("a.cardGlobal[href='/chitiet/111111111111']");
+        this.card3 = page.locator("a.cardGlobal[href='/chitiet/123333333']");
+        this.card4 = page.locator("a.cardGlobal[href='/chitiet/12343554654546456456']");
     }
 
     async clickStickerCard() {
