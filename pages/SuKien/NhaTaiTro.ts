@@ -36,8 +36,8 @@ export class NhaTaiTroPage {
             await img.evaluate(async (el: HTMLImageElement) => {
                 if (!el.complete || el.naturalWidth === 0) {
                     await new Promise<void>((resolve, reject) => {
-                    el.addEventListener('load', () => resolve(), { once: true });
-                    el.addEventListener('error', () => reject('❌ Lỗi load ảnh: ' + el.src), { once: true });
+                        el.addEventListener('load', () => resolve(), { once: true });
+                        el.addEventListener('error', () => reject('❌ Lỗi load ảnh: ' + el.src), { once: true });
                     });
                 }
             });

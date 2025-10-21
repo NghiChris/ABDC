@@ -25,7 +25,7 @@ test.describe("Test function event", () => {
    
     // })
 
-    test("Mở Event Sale Cuối Năm + Quay về", async () => {
+    test("TNV-7,Mở Event Sale Cuối Năm + Quay về", async () => {
         await dashboard.waitForDomLoaded();
         await dashboard.hoverMouse();
         await suKienList.openLastYearEvent();
@@ -34,14 +34,14 @@ test.describe("Test function event", () => {
         await danhSachPage.backHome();
     })
 
-    test("Mở Event Giáng Sinh", async () => {
+    test("TNV-7,Mở Event Giáng Sinh", async () => {
         await dashboard.waitForDomLoaded();
         await suKienList.openGiangSinhEvent();
         await suKienList.expectAtUrl(/\/sukien\/Noel$/);
         // await suKienPage.expectAtUrl(/\/sukien\/Giangsinh$/i); // i không phân biệt hoa thường
     })
 
-    test("Mở Event Noel", async () => {
+    test("TNV-7,Mở Event Noel", async () => {
         await dashboard.waitForDomLoaded();
         await suKienList.openNoelEvent();
         // await suKienPage.expectAtUrl(/\/sukien\/Noel$/);

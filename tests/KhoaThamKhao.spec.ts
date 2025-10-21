@@ -22,40 +22,57 @@ test.describe("Test function reference course", () => {
         await dashboard.openKhoaHoc();
     });
 
-    test("Khoá Tham Khảo 1", async ({ page }) => {
+    // test("Khoá Tham Khảo 1", async ({ page }) => {
+    //     await khoaThamKhao.clickStickerCard();
+    //     await khoaThamKhao.hoverCard1();
+    //     // await khoaThamKhao.hoverCard2();
+    //     // await khoaThamKhao.hoverCard3();
+    //     // await khoaThamKhao.hoverCard4();
+    //     await expect(page.getByText("Khóa học tham khảo")).toBeVisible();
+    // })
+
+    //     test("Khoá Tham Khảo 2", async ({ page }) => {
+    //     await khoaThamKhao.clickStickerCard();
+    //     // await khoaThamKhao.hoverCard1();
+    //     await khoaThamKhao.hoverCard2();
+    //     // await khoaThamKhao.hoverCard3();
+    //     // await khoaThamKhao.hoverCard4();
+    //     await expect(page.getByText("Yêu thích").nth(1)).toBeVisible();
+    // })
+
+    //     test("Khoá Tham Khảo 3", async ({ page }) => {
+    //     await khoaThamKhao.clickStickerCard();
+    //     // await khoaThamKhao.hoverCard1();
+    //     // await khoaThamKhao.hoverCard2();
+    //     await khoaThamKhao.hoverCard3();
+    //     // await khoaThamKhao.hoverCard4();
+    //     await expect(page.getByText("Elun Musk Ricard").nth(2)).toBeVisible();
+    // })
+
+    //     test("Khoá Tham Khảo 4", async ({ page }) => {
+    //     await khoaThamKhao.clickStickerCard();
+    //     // await khoaThamKhao.hoverCard1();
+    //     // await khoaThamKhao.hoverCard2();
+    //     // await khoaThamKhao.hoverCard3();
+    //     await khoaThamKhao.hoverCard4();
+    //     await expect(page.getByText("BOOTCAMP - LẬP TRÌNH FULL STACK TỪ ZERO ĐẾN CÓ VIỆC").nth(3)
+    //     ).toBeVisible();
+    // })
+
+    test("Khoá học tham khảo", async ({ page }) => {
         await khoaThamKhao.clickStickerCard();
-        await khoaThamKhao.hoverCard1();
-        // await khoaThamKhao.hoverCard2();
-        // await khoaThamKhao.hoverCard3();
-        // await khoaThamKhao.hoverCard4();
+        // await expect(page.getByText("Khoá học tham khảo", { exact: false })).toBeVisible();
         await expect(page.getByText("Khóa học tham khảo")).toBeVisible();
-    })
+        
+        const testData = [
+            { text: "Xem Chi Tiết" },
+            { text: "Yêu thích" },
+            { text: "Elun Musk Ricard" },
+            { text: "BOOTCAMP - LẬP TRÌNH FULL STACK TỪ ZERO ĐẾN CÓ VIỆC" },
+        ];
 
-        test("Khoá Tham Khảo 2", async ({ page }) => {
-        await khoaThamKhao.clickStickerCard();
-        // await khoaThamKhao.hoverCard1();
-        await khoaThamKhao.hoverCard2();
-        // await khoaThamKhao.hoverCard3();
-        // await khoaThamKhao.hoverCard4();
-        await expect(page.getByText("Yêu thích").nth(1)).toBeVisible();
-    })
-
-        test("Khoá Tham Khảo 3", async ({ page }) => {
-        await khoaThamKhao.clickStickerCard();
-        // await khoaThamKhao.hoverCard1();
-        // await khoaThamKhao.hoverCard2();
-        await khoaThamKhao.hoverCard3();
-        // await khoaThamKhao.hoverCard4();
-        await expect(page.getByText("Elun Musk Ricard").nth(2)).toBeVisible();
-    })
-
-        test("Khoá Tham Khảo 4", async ({ page }) => {
-        await khoaThamKhao.clickStickerCard();
-        // await khoaThamKhao.hoverCard1();
-        // await khoaThamKhao.hoverCard2();
-        // await khoaThamKhao.hoverCard3();
-        await khoaThamKhao.hoverCard4();
-        await expect(page.getByText("BOOTCAMP - LẬP TRÌNH FULL STACK TỪ ZERO ĐẾN CÓ VIỆC").nth(3)
-        ).toBeVisible();
+        for (let i = 0; i < testData.length; i++) {
+            await khoaThamKhao.hoverCardAndCheck(i, testData[i].text);
+        }
     })
 });
